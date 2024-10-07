@@ -35,7 +35,6 @@
         <DataTable class="w-full" :value="results" :paginator="true" :rows="10" :rowsPerPageOptions="[5, 10, 20, 50, 100]" v-if="results.length > 0" :loading="loading">
             <Column sortable field="cheville_min" header="Tour cheville min"></Column>
             <Column sortable field="cheville_max" header="Tour cheville max"></Column>
-            <!-- fields: mollet min et max, cuisse min et max, hanche max, taille, hauteur min et max, hauteur, dénomination -->
             <Column sortable field="cuisse_min" header="Tour cuisse min"></Column>
             <Column sortable field="cuisse_max" header="Tour cuisse max"></Column>
             <Column sortable field="hanche_max" header="Tour hanche max"></Column>
