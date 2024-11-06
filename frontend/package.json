@@ -1,6 +1,7 @@
 {
+  "main": "electron-main.js",
   "name": "frontend",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -10,11 +11,40 @@
     "test:unit": "vitest",
     "build-only": "vite build",
     "type-check": "vue-tsc --build --force",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
+    "serve": "vue-cli-service serve",
+    "build:vue": "vue-cli-service build",
+    "build:electron": "electron-builder",
+    "start": "electron ."
+  },
+  "build": {
+    "appId": "lucasboillot.fr",
+    "productName": "Contention PRO",
+    "directories": {
+        "output": "dist_electron"
+    },
+    "files": [
+        "dist/**/*",
+        "electron-main.js",
+        "preload.js",
+        "public/db.json"
+    ],
+    "mac": {
+        "target": "dmg"
+    },
+    "win": {
+        "target": "nsis",
+        "artifactName": "${productName}-Setup-${version}.exe"
+    },
+    "linux": {
+        "target": "AppImage",
+        "category": "Utility"
+    }
   },
   "dependencies": {
     "@primevue/themes": "^4.0.7",
     "axios": "^1.7.7",
+    "electron-updater": "^6.3.9",
     "pinia": "^2.1.7",
     "primevue": "^4.0.7",
     "vue": "^3.4.29",
@@ -30,9 +60,13 @@
     "@vue/test-utils": "^2.4.6",
     "@vue/tsconfig": "^0.5.1",
     "autoprefixer": "^10.4.20",
+    "electron": "^33.1.0",
+    "electron-builder": "^25.1.8",
     "eslint": "^8.57.0",
     "eslint-plugin-vue": "^9.23.0",
+    "install": "^0.13.0",
     "jsdom": "^24.1.0",
+    "npm": "^10.9.0",
     "npm-run-all2": "^6.2.0",
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.13",
